@@ -22,7 +22,7 @@
 #import <AddressBook/AddressBook.h>
 #import "linphonecore.h"
 #include "LinphoneManager.h"
-#include "private.h"
+
 #import "ContactPickerDelegate.h"
 #import <QuartzCore/CAAnimation.h>
 #import <QuartzCore/QuartzCore.h>
@@ -99,7 +99,7 @@ const NSInteger SECURE_BUTTON_TAG=5;
 bool isInConference(LinphoneCall* call) {
     if (!call)
         return false;
-    return linphone_call_get_current_params(call)->in_conference;
+    return linphone_call_is_in_conference(call);
 }
 
 int callCount(LinphoneCore* lc) {
@@ -502,7 +502,7 @@ void addAnimationFadeTransition(UIView* view, float duration) {
     while (calls) {
         LinphoneCall* call = (LinphoneCall*) calls->data;
         LinphoneCallAppData* data = ((LinphoneCallAppData*)linphone_call_get_user_pointer(call));
-        if (call != cd.call && !linphone_call_get_current_params(call)->in_conference) {
+        if (call != cd.call && !linphone_call_is_in_conference(call)) {
             const LinphoneAddress* addr = linphone_call_get_remote_address(call);
             NSString* btnTitle = [NSString stringWithFormat : NSLocalizedString(@"%s",nil), (linphone_address_get_display_name(addr) ?linphone_address_get_display_name(addr):linphone_address_get_username(addr))];
             data->transferButtonIndex = [visibleActionSheet addButtonWithTitle:btnTitle];
@@ -732,7 +732,7 @@ static void hideSpinner(LinphoneCall* call, void* user_data) {
     videoWaitingForFirstImage.hidden = NO;
     [videoWaitingForFirstImage startAnimating];
     
-    if (call->videostream) {
+    if (linphone_call_params_video_enabled(linphone_call_get_current_params(call))) {
         linphone_call_set_next_video_frame_decoded_callback(call, hideSpinner, self);
     }
     return;
@@ -1048,7 +1048,7 @@ static void hideSpinner(LinphoneCall* call, void* user_data) {
 		// Call Quality Indicator
 		UIImageView* callquality = [UIImageView new];
 		[callquality setFrame:CGRectMake(0, 0, 28, 28)];
-		if (call->state == LinphoneCallStreamsRunning) 
+		if (linphone_call_get_state(call) == LinphoneCallStreamsRunning)
 		{
             [IncallViewController   updateIndicator: callquality withCallQuality:linphone_call_get_average_quality(call)];
 		}

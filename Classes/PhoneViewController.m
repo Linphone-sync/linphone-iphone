@@ -26,7 +26,7 @@
 #include "FirstLoginViewController.h"
 #include "MainScreenWithVideoPreview.h"
 #include "linphonecore.h"
-#include "private.h"
+
 
 @implementation PhoneViewController
 @synthesize  dialerView ;
