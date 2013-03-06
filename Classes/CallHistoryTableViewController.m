@@ -126,18 +126,18 @@
 	LinphoneCallLog*  callLogs = ms_list_nth_data(logs,  indexPath.row) ;
 
 	NSString *path;
-	if (callLogs->dir == LinphoneCallIncoming) {
-        if (callLogs->status == LinphoneCallSuccess) {
-            path = [[NSBundle mainBundle] pathForResource:callLogs->video_enabled?@"in_call_video":@"in_call" ofType:@"png"];
+	if (linphone_call_log_get_dir(callLogs) == LinphoneCallIncoming) {
+        if (linphone_call_log_get_status(callLogs) == LinphoneCallSuccess) {
+            path = [[NSBundle mainBundle] pathForResource:linphone_call_log_video_enabled(callLogs)?@"in_call_video":@"in_call" ofType:@"png"];
         } else {
             //missed call
             path = [[NSBundle mainBundle] pathForResource:@"missed_call" ofType:@"png"];
         }
-		partyToDisplay=callLogs->from;
+		partyToDisplay=linphone_call_log_get_from(callLogs);
 		
 	} else {
-		path = [[NSBundle mainBundle] pathForResource:callLogs->video_enabled?@"out_call_video":@"out_call" ofType:@"png"];
-		partyToDisplay=callLogs->to;
+		path = [[NSBundle mainBundle] pathForResource:linphone_call_log_video_enabled(callLogs)?@"out_call_video":@"out_call" ofType:@"png"];
+		partyToDisplay=linphone_call_log_get_to(callLogs);
 		
 	}
 	UIImage *image = [UIImage imageWithContentsOfFile:path];
@@ -172,11 +172,11 @@
 	const MSList * logs = linphone_core_get_call_logs([LinphoneManager getLc]);
 	LinphoneCallLog*  callLogs = ms_list_nth_data(logs,  indexPath.row) ;
 	LinphoneAddress* partyToCall; 
-	if (callLogs->dir == LinphoneCallIncoming) {
-		partyToCall=callLogs->from;
+	if (linphone_call_log_get_dir(callLogs) == LinphoneCallIncoming) {
+		partyToCall=linphone_call_log_get_from(callLogs);
 		
 	} else {
-		partyToCall=callLogs->to;
+		partyToCall=linphone_call_log_get_to(callLogs);
 		
 	}
 	const char* username = linphone_address_get_username(partyToCall)!=0?linphone_address_get_username(partyToCall):"";

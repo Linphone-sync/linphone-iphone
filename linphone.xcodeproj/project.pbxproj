@@ -224,8 +224,6 @@
 		340751E8150F38FD00B89C47 /* UIToggleVideoButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 340751E6150F38FD00B89C47 /* UIToggleVideoButton.m */; };
 		340A75B014C0670B006AA708 /* ConferenceCallDetailView-ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 340A75AF14C0670A006AA708 /* ConferenceCallDetailView-ipad.xib */; };
 		340A75B114C0670B006AA708 /* ConferenceCallDetailView-ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 340A75AF14C0670A006AA708 /* ConferenceCallDetailView-ipad.xib */; };
-		3418843714C58BB100EA48C7 /* nowebcamCIF.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3418843614C58BB100EA48C7 /* nowebcamCIF.jpg */; };
-		3418843814C58BB100EA48C7 /* nowebcamCIF.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3418843614C58BB100EA48C7 /* nowebcamCIF.jpg */; };
 		3418844814C6CAD300EA48C7 /* StatusSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3418844614C6CAD300EA48C7 /* StatusSubViewController.m */; };
 		3418844914C6CAD300EA48C7 /* StatusSubViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3418844614C6CAD300EA48C7 /* StatusSubViewController.m */; };
 		3418844A14C6CAD300EA48C7 /* StatusSubViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3418844714C6CAD300EA48C7 /* StatusSubViewController.xib */; };
@@ -626,7 +624,6 @@
 		340751E5150F38FC00B89C47 /* UIToggleVideoButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIToggleVideoButton.h; sourceTree = "<group>"; };
 		340751E6150F38FD00B89C47 /* UIToggleVideoButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIToggleVideoButton.m; sourceTree = "<group>"; };
 		340A75AF14C0670A006AA708 /* ConferenceCallDetailView-ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "ConferenceCallDetailView-ipad.xib"; sourceTree = "<group>"; };
-		3418843614C58BB100EA48C7 /* nowebcamCIF.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = nowebcamCIF.jpg; path = submodules/linphone/mediastreamer2/src/nowebcamCIF.jpg; sourceTree = "<group>"; };
 		3418844514C6CAD300EA48C7 /* StatusSubViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StatusSubViewController.h; sourceTree = "<group>"; };
 		3418844614C6CAD300EA48C7 /* StatusSubViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatusSubViewController.m; sourceTree = "<group>"; };
 		3418844714C6CAD300EA48C7 /* StatusSubViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusSubViewController.xib; sourceTree = "<group>"; };
@@ -1228,7 +1225,6 @@
 				3418845114C6F66F00EA48C7 /* status_orange.png */,
 				3418845214C6F66F00EA48C7 /* status_red.png */,
 				3418844C14C6D1CE00EA48C7 /* startcall-gray.png */,
-				3418843614C58BB100EA48C7 /* nowebcamCIF.jpg */,
 				1AE0A49314AC5C64002C99BD /* stat_sys_signal_0.png */,
 				1AE0A49414AC5C64002C99BD /* stat_sys_signal_1.png */,
 				1AE0A49514AC5C64002C99BD /* stat_sys_signal_2.png */,
@@ -1408,7 +1404,6 @@
 				1AE0A4A014AC5C64002C99BD /* stat_sys_signal_3.png in Resources */,
 				1AE0A4A214AC5C64002C99BD /* stat_sys_signal_4.png in Resources */,
 				340A75B014C0670B006AA708 /* ConferenceCallDetailView-ipad.xib in Resources */,
-				3418843714C58BB100EA48C7 /* nowebcamCIF.jpg in Resources */,
 				3418844A14C6CAD300EA48C7 /* StatusSubViewController.xib in Resources */,
 				3418844D14C6D1CE00EA48C7 /* startcall-gray.png in Resources */,
 				3418845314C6F66F00EA48C7 /* status_green.png in Resources */,
@@ -1482,7 +1477,6 @@
 				1AE0A4A114AC5C64002C99BD /* stat_sys_signal_3.png in Resources */,
 				1AE0A4A314AC5C64002C99BD /* stat_sys_signal_4.png in Resources */,
 				340A75B114C0670B006AA708 /* ConferenceCallDetailView-ipad.xib in Resources */,
-				3418843814C58BB100EA48C7 /* nowebcamCIF.jpg in Resources */,
 				3418844B14C6CAD300EA48C7 /* StatusSubViewController.xib in Resources */,
 				3418844E14C6D1CE00EA48C7 /* startcall-gray.png in Resources */,
 				3418845414C6F66F00EA48C7 /* status_green.png in Resources */,

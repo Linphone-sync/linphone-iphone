@@ -116,10 +116,10 @@ extern  void libmsbcg729_init();
     //1 copy adress book
     LinphoneCallLog* lLog = linphone_call_get_call_log(call);
     LinphoneAddress* lAddress;
-    if (lLog->dir == LinphoneCallIncoming) {
-        lAddress=lLog->from;
+    if (linphone_call_log_get_dir(lLog) == LinphoneCallIncoming) {
+        lAddress=linphone_call_log_get_from(lLog);
     } else {
-        lAddress=lLog->to;
+        lAddress=linphone_call_log_get_to(lLog);
     }
     const char* lUserName = linphone_address_get_username(lAddress); 
     if (!lUserName) {
@@ -172,7 +172,8 @@ extern  void libmsbcg729_init();
 			
 			/*should we reject this call ?*/
 			if ([callCenter currentCalls]!=nil) {
-				ms_message("Mobile call ongoing... rejecting call from [%s]",linphone_address_get_username(linphone_call_get_call_log(call)->from));
+				ms_message("Mobile call ongoing... rejecting call from [%s]"
+						   ,linphone_address_get_username(linphone_call_log_get_from(linphone_call_get_call_log(call))));
 				linphone_core_decline_call([LinphoneManager getLc], call, LinphoneReasonBusy);
 				return;
 			}
