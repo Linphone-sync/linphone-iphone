@@ -450,10 +450,10 @@ static void linphone_iphone_registration_state(LinphoneCore *lc, LinphoneProxyCo
 
 static LinphoneCoreVTable linphonec_vtable = {
 	.show =NULL,
-	.call_state_changed =(LinphoneCallStateCb)linphone_iphone_call_state,
+	.call_state_changed =(LinphoneCoreCallStateChangedCb)linphone_iphone_call_state,
 	.registration_state_changed = linphone_iphone_registration_state,
-	.notify_recv = NULL,
-	.new_subscription_request = NULL,
+	.notify_presence_received = NULL,
+	.new_subscription_requested = NULL,
 	.auth_info_requested = NULL,
 	.display_status = linphone_iphone_display_status,
 	.display_message=linphone_iphone_log,
