@@ -30,6 +30,10 @@
 #include "LinphoneManager.h"
 #include "linphone/linphonecore.h"
 
+#if INTEGRATION_TESTING
+#import <Subliminal/Subliminal.h>
+#endif
+
 @implementation UILinphoneWindow
 
 @end
@@ -123,7 +127,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeSound|UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeNewsstandContentAvailability];
     
-
+#if INTEGRATION_TESTING
+    [[SLTestController sharedTestController] runTests:[SLTest allTests] withCompletionBlock:nil];
+#endif
+    
 	LinphoneManager* instance = [LinphoneManager instance];
     BOOL background_mode = [instance lpConfigBoolForKey:@"backgroundmode_preference"];
     BOOL start_at_boot   = [instance lpConfigBoolForKey:@"start_at_boot_preference"];

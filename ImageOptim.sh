@@ -10,6 +10,11 @@ if [ "$CONFIGURATION" == "Debug" ]; then
     exit 0
 fi
 
+if [ "$TARGETNAME" == "Integration Tests" ]; then
+    echo "Don't optimize images for interation tests"
+    exit 0
+fi
+
 CONVERT=/opt/local/bin/convert
 CONVERTFILTER="-sharpen 1x0.0 -filter Catrom"
 OPTIPNG=/opt/local/bin/optipng
