@@ -189,6 +189,8 @@ NSTimer *callSecurityTimer;
             break;
     }
     [registrationStateLabel setText:message];
+    registrationStateLabel.accessibilityValue = message;
+    
     [registrationStateImage setImage:image];
 }
 
