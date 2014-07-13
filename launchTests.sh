@@ -18,5 +18,6 @@ YOUR_PROJECT=linphone.xcworkspace
     -scheme "Integration Tests" \
     -sim_device "$DEVICE" \
     -sim_version "$VERSION" \
-    -output "$OUTPUT_DIR"
+    -output "$OUTPUT_DIR" \
+    --quiet_build
 
