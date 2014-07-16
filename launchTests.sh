@@ -8,7 +8,7 @@ VERSION=7.1
 
 OUTPUT_DIR=reports
 mkdir -p "$OUTPUT_DIR"
-PROJECT_DIR=/Users/gui13/Dev/linphone-iphone
+PROJECT_DIR=$PWD
 YOUR_PROJECT=linphone.xcworkspace
 
 # Returns 0 on success, 1 on failure
