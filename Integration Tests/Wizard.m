@@ -15,9 +15,6 @@
 
 @implementation Wizard
 
-// keep the '\n' at the end, they ensure the keyboard is dismissed
-static NSString* const test_username = @"testios\n";
-static NSString* const test_password = @"testtest\n";
 
 - (void)setUpTest {
     [self addContactPopupHandler];
@@ -36,25 +33,24 @@ static NSString* const test_password = @"testtest\n";
     //go to wizard and back to clear all config
     [self addWizardPopupHandler];
     SLElement* wizardButton = [SLElement elementWithAccessibilityLabel:@"Run assistant"];
-    [wizardButton tap];
+    [UIAElement(wizardButton) tap];
     [self wait:2];
-
     
     SLElement* startButton = [SLElement elementWithAccessibilityLabel:@"Start"];
     SLElement* signInLinphone = [SLElement elementWithAccessibilityLabel:@"Sign in linphone.org account"];
-    
+
     SLAssertTrue(startButton!=nil, @"No start button");
-    [startButton tap];
+    [UIAElement(startButton) tap];
 	
     SLAssertTrueWithTimeout([signInLinphone isValidAndVisible], 0.5F, @"No Sign in button");
     
-    [signInLinphone tap];
+    [UIAElement(signInLinphone) tap];
     
     SLTextField* username = [SLTextField elementWithAccessibilityLabel:@"Username"];
     SLTextField* password = [SLTextField elementWithAccessibilityLabel:@"Password"];
     
-    [username setText:test_username];
-    [password setText:test_password];
+    [UIAElement(username) setText:kTestUsername];
+    [UIAElement(password) setText:kTestPassword];
     
     
     SLElement* signInButton = [SLElement elementWithAccessibilityLabel:@"Sign in"];

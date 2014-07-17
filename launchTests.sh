@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Run the tests on the 3.5" Retina iPhone Simulator
-DEVICE="iPhone Retina (3.5-inch)"
+DEVICE="iPhone Retina (4-inch)"
 
 # Run the tests on iOS 7.0
-VERSION=7.1
+VERSION=6.1
 
 OUTPUT_DIR=reports
 mkdir -p "$OUTPUT_DIR"
