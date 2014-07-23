@@ -19,5 +19,5 @@ YOUR_PROJECT=linphone.xcworkspace
     -sim_device "$DEVICE" \
     -sim_version "$VERSION" \
     -output "$OUTPUT_DIR" \
-    --quiet_build
+    --quiet_build $@
 
