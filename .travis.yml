@@ -7,7 +7,6 @@ git:
 
 env:
     global:
-        - PROJECT_PATH=linphone.xcworkspace
         - DEVICE="iPhone Retina (3.5-inch)"
         - VERSION="6.1"
 
@@ -20,7 +19,7 @@ install:
 
 # Use Pods/Subliminal/.../subliminal-test if using Cocoapods
 script: >
-    "Pods/Subliminal/Supporting Files/CI/subliminal-test"
-    -project "$PROJECT_PATH"
+    ./"Pods/Subliminal/Supporting Files/CI/subliminal-test"
+    -project linphone.xcworkspace
     -sim_device "$DEVICE"
     -sim_version "$VERSION"
