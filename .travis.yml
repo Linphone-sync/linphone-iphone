@@ -12,7 +12,9 @@ env:
         - VERSION="6.1"
 
 install: 
-    - cd submodules/build && make download-sdk
+    - cd submodules/build 
+    - make download-sdk
+    - cd ../..
 
 # Use Pods/Subliminal/.../subliminal-test if using Cocoapods
 script: >
