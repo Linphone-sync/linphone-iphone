@@ -3,3 +3,18 @@ xcode_project: linphone.xcworkspace # path to your xcodeproj folder
 xcode_scheme: Integration Tests
 
 
+env:
+    global:
+        - PROJECT_PATH="linphone.xcworkspace"
+        - DEVICE="iPhone Retina (3.5-inch)"
+        - VERSION="6.1"
+
+install: 
+    - cd submodules/build && make download-sdk
+
+# Use Pods/Subliminal/.../subliminal-test if using Cocoapods
+script: >
+    "Pods/Subliminal/Supporting Files/CI/subliminal-test"
+    -project "$PROJECT_PATH"
+    -sim_device "$DEVICE"
+    -sim_version "$VERSION"
