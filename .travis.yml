@@ -20,6 +20,6 @@ install:
 # Use Pods/Subliminal/.../subliminal-test if using Cocoapods
 script: >
     ./"Pods/Subliminal/Supporting Files/CI/subliminal-test"
-    -project linphone.xcworkspace
+    -workspace linphone.xcworkspace
     -sim_device "$DEVICE"
     -sim_version "$VERSION"
