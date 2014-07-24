@@ -15,6 +15,9 @@ install:
     - cd submodules/build 
     - make download-sdk
     - cd ../..
+    - pwd
+    - ls -la Pods
+    - ls -la "Pods/Subliminal/Supporting Files/CI/"
 
 # Use Pods/Subliminal/.../subliminal-test if using Cocoapods
 script: >
