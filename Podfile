@@ -1,5 +1,5 @@
 platform :ios, '6.0'
 
 target :'Integration Tests' do
-  pod 'Subliminal'
+  pod 'Subliminal', :head
 end
