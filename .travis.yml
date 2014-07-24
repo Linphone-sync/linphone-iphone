@@ -8,7 +8,7 @@ git:
 env:
     global:
         - DEVICE="iPhone Retina (3.5-inch)"
-        - VERSION="6.1"
+        - VERSION="7.1"
 
 install: 
     - cd submodules/build 
@@ -23,3 +23,4 @@ script: >
     -workspace linphone.xcworkspace
     -sim_device "$DEVICE"
     -sim_version "$VERSION"
+    --quiet_build
