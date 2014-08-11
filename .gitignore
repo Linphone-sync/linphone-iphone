@@ -3,3 +3,5 @@ build-*
 .DS_Store
 liblinphone-sdk
 Pods/*
+liblinphone-iphone-sdk*.zip
+xcuserdata/
