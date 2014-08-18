@@ -33,10 +33,12 @@
     //go to wizard and back to clear all config
     [self addWizardPopupHandler];
     SLElement* wizardButton = [SLElement elementWithAccessibilityLabel:@"Run assistant"];
+    SLWaitUntilTrue([wizardButton isValidAndVisible], 5);
     [UIAElement(wizardButton) tap];
     [self wait:2];
     
     SLElement* startButton = [SLElement elementWithAccessibilityLabel:@"Start"];
+    SLWaitUntilTrue([startButton isValidAndVisible], 2);
     SLElement* signInLinphone = [SLElement elementWithAccessibilityLabel:@"Sign in linphone.org account"];
 
     SLAssertTrue(startButton!=nil, @"No start button");

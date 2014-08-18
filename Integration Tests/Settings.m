@@ -28,6 +28,7 @@
     [self goToSettings];
     
     SLElement* wizardButton = [SLElement elementWithAccessibilityLabel:@"Run assistant"];
+    SLWaitUntilTrue([wizardButton isValidAndVisible], 5);
     [wizardButton tap];
 
     [self wait:5];

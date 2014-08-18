@@ -35,7 +35,10 @@ NSString* const kTestPassword = @"testtest\n";
 }
 
 - (void)exitWizardIfNecessary {
+    //SLWaitUntilTrue([cancelButton isValidAndVisible], 5);
+    [self wait:5];
     SLButton* cancelButton = [SLButton elementWithAccessibilityLabel:@"Cancel"];
+
     if( [cancelButton isValidAndVisible] ){
         [cancelButton tap];
     } else {
