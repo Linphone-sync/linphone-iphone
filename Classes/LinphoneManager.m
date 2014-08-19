@@ -755,10 +755,19 @@ static void linphone_iphone_display_status(struct _LinphoneCore * lc, const char
         }
     }
 
-    if(state == LinphoneCallStreamsRunning ){
-        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
-        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+    if( state == LinphoneCallIncomingReceived || state == LinphoneCallIncomingEarlyMedia || state == LinphoneCallOutgoingInit){
+        BOOL no_voiceproc = [self lpConfigBoolForKey:@"disable_voiceproc"];
+        NSString* au_device = @"AU: Audio Unit Receiver";
+        int eq_active = 1;
+        if( no_voiceproc ){
+            au_device = @"AU: Audio Unit NoVoiceProc";
+            eq_active = 0;
+        }
+        linphone_core_set_capture_device(theLinphoneCore, [au_device UTF8String]);
+        linphone_core_set_playback_device(theLinphoneCore, [au_device UTF8String]);
+        [self lpConfigSetInt:eq_active forKey:@"eq_active" forSection:@"sound"];
     }
+
 
     if (state == LinphoneCallConnected && !mCallCenter) {
 		/*only register CT call center CB for connected call*/
