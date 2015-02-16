@@ -445,7 +445,13 @@ static UICompositeViewDescription *compositeDescription = nil;
 		}
         // when the domain is specified (for external login), take it as the server address
         linphone_proxy_config_set_server_addr(proxyCfg, [server_address UTF8String]);
-        linphone_address_set_domain(linphoneAddress, [domain UTF8String]);
+
+		NSInteger portLocation = [domain rangeOfString:@":"].location;
+		if (portLocation == NSNotFound) {
+			linphone_address_set_domain(linphoneAddress, [domain UTF8String]);
+		} else {
+			linphone_address_set_domain(linphoneAddress, [[domain substringToIndex:portLocation] UTF8String]);
+		}
     }
 
     char* extractedAddres = linphone_address_as_string_uri_only(linphoneAddress);
@@ -453,7 +459,7 @@ static UICompositeViewDescription *compositeDescription = nil;
 	LinphoneAddress* parsedAddress = linphone_address_new(extractedAddres);
 	ms_free(extractedAddres);
 
-	if( parsedAddress == NULL || !linphone_address_is_sip(parsedAddress) ){
+	if( parsedAddress == NULL /*|| !linphone_address_is_sip(parsedAddress) */){
 		if( parsedAddress ) linphone_address_destroy(parsedAddress);
 		UIAlertView* errorView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Check error(s)",nil)
 															message:NSLocalizedString(@"Please enter a valid username", nil)
