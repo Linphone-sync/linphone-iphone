@@ -1,28 +1,20 @@
 [sip]
 contact="Linphone iPhone" <sip:linphone.iphone@unknown-host>
-keepalive_period=30000
+keepalive_period=-1
 default_proxy=0
 sip_port=-1
 sip_tcp_port=-1
-use_ipv6=0
-
-[rtp]
-audio_rtp_port=7076
-video_rtp_port=9078
-
-[video]
-display=1
-capture=1
-show_local=0
-enabled=1
-size=qvga
-automatically_initiate=0
-automatically_accept=0
 
 [net]
-firewall_policy=0
 download_bw=380
 upload_bw=380
+enable_nat_helper=0
+
+
+[video]
+automatically_accept=1
+automatically_initiate=0
+size=qvga
 
 [sound]
 playback_dev_id=AU: Audio Unit Receiver
@@ -30,6 +22,10 @@ capture_dev_id=AU: Audio Unit Receiver
 eq_active=0
 
 [app]
+sharing_server=https://www.linphone.org:444/upload.php
+tunnel=disabled
+debug=1
+rotation_preference=auto
 animations_preference=1
 edge_opt_preference=0
 use_system_contacts=0
