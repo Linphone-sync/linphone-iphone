@@ -1,10 +1,11 @@
 
 
-# /!\ Unset compiler env variable is set by user to avoid error in configure such as:
+# /!\ Unset compiler env variable if set by user to avoid error in configure such as:
 # 1) Requested extra CFLAGS '-fno-strict-aliasing' not supported by compiler
 # OR
 # 2) Unable to invoke compiler
 unexport CC
+unexport CFLAGS
 
 libvpx_dir?=externals/libvpx
 

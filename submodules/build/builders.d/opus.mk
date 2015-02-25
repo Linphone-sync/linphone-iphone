@@ -1,5 +1,5 @@
 ############################################################################
-# opus.mk 
+# opus.mk
 # Copyright (C) 2013  Belledonne Communications,Grenoble France
 #
 ############################################################################
@@ -19,10 +19,14 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #
 ############################################################################
+
+#turn off warnings since we cannot fix them
+export CFLAGS=-w
+
 opus_dir?=externals/opus
 enable_opus?=yes
 
-libopus_configure_options=--disable-extra-programs --disable-doc 
+libopus_configure_options=--disable-extra-programs --disable-doc
 ifneq (,$(findstring armv7,$(host)))
         libopus_configure_options+= --enable-fixed-point
 endif
@@ -58,12 +62,12 @@ build-opus:
 
 endif
 
-clean-opus: 
+clean-opus:
 	-cd  $(BUILDER_BUILD_DIR)/$(opus_dir) && make clean
 
-veryclean-opus: 
-	-cd $(BUILDER_BUILD_DIR)/$(opus_dir) && make distclean 
+veryclean-opus:
+	-cd $(BUILDER_BUILD_DIR)/$(opus_dir) && make distclean
 	rm -f $(BUILDER_SRC_DIR)/$(opus_dir)/configure
 
-clean-makefile-opus: 
+clean-makefile-opus:
 	-cd $(BUILDER_BUILD_DIR)/$(opus_dir) && rm -f Makefile
