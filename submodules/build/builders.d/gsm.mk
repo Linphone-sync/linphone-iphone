@@ -15,13 +15,14 @@ build-libgsm:
 	&& mkdir -p $(prefix)/include/gsm \
 	&& host_alias=$(host)  . $(BUILDER_SRC_DIR)/build/$(config_site) \
 	&& make install \
+			RMFLAGS=-f \
 			CC="$${CC} $${COMMON_FLAGS} -w" \
 			INSTALL_ROOT=$(prefix) \
 			GSM_INSTALL_INC=$(prefix)/include/gsm
 
 clean-libgsm:
 	cd $(BUILDER_BUILD_DIR)/$(gsm_dir)\
-	&& make clean
+	&& make RMFLAGS=-f clean
 
 veryclean-libgsm:
 	-rm -rf $(BUILD_DIR)/$(gsm_dir)
