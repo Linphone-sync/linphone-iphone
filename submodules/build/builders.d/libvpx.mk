@@ -51,12 +51,12 @@ all_p+=armv7-darwin-gcc    #neon Cortex-A8
 
 ifeq ($(force_non_binary_libvpx),1)
 take_binary=
-libvpx_configure_options+= --extra-cflags="-fno-strict-aliasing"
 endif
 
 $(BUILDER_SRC_DIR)/$(libvpx_dir)/patched.stamp:
 	cd $(BUILDER_SRC_DIR)/$(libvpx_dir) \
 	&& git apply $(BUILDER_SRC_DIR)/build/builders.d/libvpx.patch \
+	&& git apply $(BUILDER_SRC_DIR)/build/builders.d/libvpx_2.patch \
 	&& touch $@
 
 
@@ -64,7 +64,9 @@ $(BUILDER_BUILD_DIR)/$(libvpx_dir)/config.mk: $(BUILDER_SRC_DIR)/$(libvpx_dir)/p
 	mkdir -p $(BUILDER_BUILD_DIR)/$(libvpx_dir)
 	cd $(BUILDER_BUILD_DIR)/$(libvpx_dir)/ \
 	&&  host_alias=${host} . $(BUILDER_SRC_DIR)/build/$(config_site) \
-	&& export all_platforms="${all_p}" &&  $(BUILDER_SRC_DIR)/$(libvpx_dir)/configure --prefix=$(prefix) --sdk-path=$$SDK_BIN_PATH/../../ --libc=$$SYSROOT_PATH $(libvpx_configure_options)
+	&& export all_platforms="${all_p}" \
+	&& export CC="${CC}" && export CXX="${CXX}" \
+	&& $(BUILDER_SRC_DIR)/$(libvpx_dir)/configure --prefix=$(prefix) --sdk-path=$$SDK_BIN_PATH/../../ --libc=$$SYSROOT_PATH $(libvpx_configure_options)
 
 build-libvpx: $(BUILDER_BUILD_DIR)/$(libvpx_dir)/config.mk
 	cd $(BUILDER_BUILD_DIR)/$(libvpx_dir) \
