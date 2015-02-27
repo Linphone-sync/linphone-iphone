@@ -128,7 +128,8 @@ download-sdk:
 
 build: broadcast_all libs
 
-ipa: build broadcast_ipa
+ipa: build
+	make -f builder-iphone-os.mk $(LINPHONE_OPTIONS) ipa
 
 clean: broadcast_clean
 
