@@ -63,12 +63,10 @@ RANLIB="xcrun ranlib"
 STRIP="xcrun strip"
 NM="xcrun nm"
 
-# We must concatenate with variable previous value too. Order is important: we must
-# ensure that if something was set previously it overrides site config (such as -Wno-error vs -Werror)
-LDFLAGS="-arch ${ARCH} $LDFLAGS" #Linker flags
-CPPFLAGS="-Dasm=__asm" $CPPFLAGS #C preprocessor flags
-CFLAGS="$COMMON_FLAGS -std=c99 $CFLAGS" #C flags
-CXXFLAGS="$COMMON_FLAGS $CXXFLAGS" #C++ flags
-OBJCFLAGS="$COMMON_FLAGS -std=c99 -x objective-c -fexceptions -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch $OBJCFLAGS" #ObjectiveC flags
+LDFLAGS="-arch ${ARCH}" #Linker flags
+CPPFLAGS="-Dasm=__asm" #C preprocessor flags
+CFLAGS="$COMMON_FLAGS -std=c99" #C flags
+CXXFLAGS="$COMMON_FLAGS" #C++ flags
+OBJCFLAGS="$COMMON_FLAGS -std=c99 -x objective-c -fexceptions -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch" #ObjectiveC flags
 #Force install script to use -C so that header files don't get re-written if not changed.
 INSTALL_DATA="ginstall -C"
