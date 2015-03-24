@@ -49,7 +49,8 @@ void LSLog(NSString* fmt, ...){
     static char * bundle = NULL;
     static char * documents = NULL;
     bc_tester_init((void (*)(int, const char *fm, va_list))linphone_log_function, ORTP_MESSAGE, ORTP_ERROR);
-	liblinphone_tester_add_suites();
+//	liblinphone_tester_add_suites();
+	bc_tester_add_suite(&quality_reporting_test_suite);
 
     NSString* bundlePath = [[NSBundle mainBundle] bundlePath];
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
